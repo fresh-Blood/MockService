@@ -5,7 +5,7 @@ public struct MockService {
     public init() {
     }
     
-    enum MockLoadingState {
+    public enum MockLoadingState {
         case success
         case failure
     }

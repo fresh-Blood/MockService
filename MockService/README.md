@@ -1,3 +1,3 @@
 # MockService
 
-A description of this package.
+Universal configurable MockService for your project 

@@ -15,11 +15,10 @@ let package = Package(
             name: "MockService",
             targets: ["MockService"]),
     ],
-    dependencies: [],
     targets: [
         .target(
             name: "MockService",
-            dependencies: []),
+            path: "Sources"),
         .testTarget(
             name: "MockServiceTests",
             dependencies: ["MockService"]),

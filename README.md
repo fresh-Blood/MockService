@@ -1,27 +1,4 @@
 # MockService
 Universal MockService
 
-// MARK: - Example
-// Somewhere in your production code...
-func getData() {
-    // Prepare your mock data
-    let mockData = PersonDTO(name: "Yaroslav", age: 31)
-    
-    // Set optional error if needed
-    MockService.getData(with: .success,
-                     optionalError: MockAppError(statusCode: 404,
-                                                 message: "Server error"),
-                     loadingDelay: 3.0,
-                     mockData: mockData) { result in
-        switch result {
-            case .success(let personData):
-                // Success result handling
-                print("Success: \(personData)")
-            case .failure(let error):
-                // Error handling
-                print("Error: \(error)")
-        }
-    }
-}
-
-getData()
+![Снимок экрана 2022-10-29 в 20 32 36](https://user-images.githubusercontent.com/88098218/198845338-545441b5-a19a-4698-8360-434e27abbe66.png)

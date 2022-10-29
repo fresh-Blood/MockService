@@ -10,22 +10,20 @@ public struct MockService {
         case failure
     }
     
-    struct MockService {
-        static func getData<T>(with state: MockLoadingState,
-                               optionalError: Error? = nil,
-                               loadingDelay: Double,
-                               mockData: T,
-                               completion: @escaping (Result<T, Error>) -> Void) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + loadingDelay, execute: {
-                switch state {
-                case .success:
-                    completion(.success(mockData))
-                case .failure:
-                    if let optionalError = optionalError {
-                        completion(.failure(optionalError))
-                    }
+    public static func getData<T>(with state: MockLoadingState,
+                                  optionalError: Error? = nil,
+                                  loadingDelay: Double,
+                                  mockData: T,
+                                  completion: @escaping (Result<T, Error>) -> Void) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + loadingDelay, execute: {
+            switch state {
+            case .success:
+                completion(.success(mockData))
+            case .failure:
+                if let optionalError = optionalError {
+                    completion(.failure(optionalError))
                 }
-            })
-        }
+            }
+        })
     }
 }

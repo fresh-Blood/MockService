@@ -2,7 +2,6 @@ import Foundation
 
 
 public struct MockService {
-    public private(set) var text = "Hello, World!"
     
     public init() { }
     

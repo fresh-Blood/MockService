@@ -1,5 +1,9 @@
 import Foundation
 
+public struct MockAppError: Error {
+    let statusCode: Int?
+    let message: String?
+}
 
 public struct MockService {
     
@@ -8,11 +12,6 @@ public struct MockService {
     public enum MockLoadingState {
         case success
         case failure
-    }
-    
-    public struct MockAppError: Error {
-        let statusCode: Int?
-        let message: String?
     }
     
     public static func getData<T>(with state: MockLoadingState,

@@ -4,13 +4,13 @@ Universal MockService
 import UIKit
 import MockService
 
-==> Configure data part 1
+==> Configure your various data part 1
 struct Person {
     let name: String
     let age: Int
 }
 
-==> Configure error
+==> Configure error if needed to test error case 
 struct CustomError: Error {
     let statusCode: Int?
     let message: String?
@@ -20,13 +20,13 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ==> Configure your various data
+        ==> Configure your various data part 2
         let data = [
             Person(name: "Ivan", age: 777),
             Person(name: "Mike", age: 7)
         ]
         
-        ==> Start mocking
+        ==> Start mocking with .failure, setting your error or .success with optionalError = nil
         MockService.getData(with: .failure,
                             optionalError: CustomError(statusCode: 404,
                                                        message: "Server error"),

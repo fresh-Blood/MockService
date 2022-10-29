@@ -2,37 +2,30 @@ import Foundation
 
 public struct MockService {
     
-    public init() { }
+    public init() {
+    }
     
-    public enum MockLoadingState {
+    enum MockLoadingState {
         case success
         case failure
     }
     
-    public struct MockAppError: Error {
-        let statusCode: Int?
-        let message: String?
-        
-        init(statusCode: Int?, message: String?) {
-            self.statusCode = statusCode
-            self.message = message
-        }
-    }
-    
-    public static func getData<T>(with state: MockLoadingState,
-                                  optionalError: MockAppError? = nil,
-                                  loadingDelay: Double,
-                                  mockData: T,
-                                  completion: @escaping (Result<T, MockAppError>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + loadingDelay, execute: {
-            switch state {
-            case .success:
-                completion(.success(mockData))
-            case .failure:
-                if let optionalError = optionalError {
-                    completion(.failure(optionalError))
+    struct MockService {
+        static func getData<T>(with state: MockLoadingState,
+                               optionalError: Error? = nil,
+                               loadingDelay: Double,
+                               mockData: T,
+                               completion: @escaping (Result<T, Error>) -> Void) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + loadingDelay, execute: {
+                switch state {
+                case .success:
+                    completion(.success(mockData))
+                case .failure:
+                    if let optionalError = optionalError {
+                        completion(.failure(optionalError))
+                    }
                 }
-            }
-        })
+            })
+        }
     }
 }

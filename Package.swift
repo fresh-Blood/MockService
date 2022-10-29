@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "MockService",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v9)
     ],
     products: [
         .library(
@@ -16,7 +16,9 @@ let package = Package(
     targets: [
         .target(
             name: "MockService",
-            path: "Sources"),
+            dependencies: [],
+            path: "Sources"
+        ),
         .testTarget(
             name: "MockServiceTests",
             dependencies: ["MockService"]),

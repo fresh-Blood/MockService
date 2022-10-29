@@ -6,9 +6,7 @@ import PackageDescription
 let package = Package(
     name: "MockService",
     platforms: [
-        .iOS(.v8),
-        .watchOS(.v2),
-        .tvOS(.v9)
+        .iOS(.v13)
     ],
     products: [
         .library(
